@@ -21,7 +21,6 @@ public class ContactServiceImpl implements ContactService {
  
     @Transactional
     public List<Contact> listContact() {
- 
         return contactDAO.listContact();
     }
  
