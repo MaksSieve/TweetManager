@@ -66,4 +66,5 @@ $RECYCLE.BIN/
 /src
 /.idea
 /.settings
+/target
 *.iml
