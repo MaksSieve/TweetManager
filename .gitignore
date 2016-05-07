@@ -63,7 +63,6 @@ $RECYCLE.BIN/
 *.lnk
 
 #IDE files
-/src
 /.idea
 /.settings
 /target
