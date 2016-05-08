@@ -30,7 +30,7 @@ public class ContactController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:/index";
+		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
