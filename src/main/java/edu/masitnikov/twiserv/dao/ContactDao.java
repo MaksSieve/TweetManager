@@ -9,7 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class IContactDaoImpl implements IContactDao {
+public class ContactDao implements IContactDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
