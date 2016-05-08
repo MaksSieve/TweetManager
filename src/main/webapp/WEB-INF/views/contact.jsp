@@ -14,12 +14,25 @@
 <a href="<c:url value="/logout" />">
 	<spring:message code="label.logout" />
 </a>
+
+<a href="<c:url value="/login.jsp"/>">
+	<spring:message code="label.login" />
+</a>
   
 <h2><spring:message code="label.title" /></h2>
 
-<form:form method="post" action="add" commandName="contact">
+<form:form method="post" action="add" commandName="tweet">
 
 	<table>
+		<tr>
+            <td>
+                <form:label path="text">
+                    <spring:message code="label.text"/>
+                </form:label>
+            </td>
+            <td><form:textarea path="text" /></td>
+		</tr>
+        <!---
 		<tr>
 			<td><form:label path="firstname">
 				<spring:message code="label.firstname" />
@@ -44,6 +57,7 @@
 			</form:label></td>
 			<td><form:input path="telephone" /></td>
 		</tr>
+		-->
 		<tr>
 			<td colspan="2"><input type="submit"
 				value="<spring:message code="label.addcontact"/>" /></td>
@@ -60,12 +74,12 @@
 			<th><spring:message code="label.telephone" /></th>
 			<th>&nbsp;</th>
 		</tr>
-		<c:forEach items="${contactList}" var="contact">
+		<c:forEach items="${contactList}" var="tweet">
 			<tr>
-				<td>${contact.lastname}, ${contact.firstname}</td>
-				<td>${contact.email}</td>
-				<td>${contact.telephone}</td>
-				<td><a href="delete/${contact.id}"><spring:message code="label.delete" /></a></td>
+				<td>${tweet.lastname}, ${tweet.firstname}</td>
+				<td>${tweet.email}</td>
+				<td>${tweet.telephone}</td>
+				<td><a href="delete/${tweet.id}"><spring:message code="label.delete" /></a></td>
 			</tr>
 		</c:forEach>
 	</table>

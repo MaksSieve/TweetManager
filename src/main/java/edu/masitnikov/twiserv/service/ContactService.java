@@ -1,13 +1,13 @@
 package edu.masitnikov.twiserv.service;
 
 import java.util.List;
-import edu.masitnikov.twiserv.domain.Contact;
+import edu.masitnikov.twiserv.domain.Tweet;
 
 public interface ContactService {
 
-	public void addContact(Contact contact);
+	public void addContact(Tweet tweet);
 
-	public List<Contact> listContact();
+	public List<Tweet> listContact();
 
 	public void removeContact(Integer id);
 }

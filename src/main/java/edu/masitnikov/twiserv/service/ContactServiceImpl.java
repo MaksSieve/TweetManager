@@ -2,8 +2,8 @@ package edu.masitnikov.twiserv.service;
  
 import java.util.List;
 
-import edu.masitnikov.twiserv.dao.ContactDAO;
-import edu.masitnikov.twiserv.domain.Contact;
+import edu.masitnikov.twiserv.dao.IContactDao;
+import edu.masitnikov.twiserv.domain.Tweet;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -12,20 +12,20 @@ import org.springframework.transaction.annotation.Transactional;
 public class ContactServiceImpl implements ContactService {
  
     @Autowired
-    private ContactDAO contactDAO;
+    private IContactDao IDao;
  
     @Transactional
-    public void addContact(Contact contact) {
-        contactDAO.addContact(contact);
+    public void addContact(Tweet tweet) {
+        IDao.addContact(tweet);
     }
  
     @Transactional
-    public List<Contact> listContact() {
-        return contactDAO.listContact();
+    public List<Tweet> listContact() {
+        return IDao.listContact();
     }
  
     @Transactional
     public void removeContact(Integer id) {
-        contactDAO.removeContact(id);
+        IDao.removeContact(id);
     }
 }

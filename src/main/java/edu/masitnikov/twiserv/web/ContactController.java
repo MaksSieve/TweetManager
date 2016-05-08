@@ -2,7 +2,7 @@ package edu.masitnikov.twiserv.web;
 
 import java.util.Map;
 
-import edu.masitnikov.twiserv.domain.Contact;
+import edu.masitnikov.twiserv.domain.Tweet;
 import edu.masitnikov.twiserv.service.ContactService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ public class ContactController {
 	@RequestMapping("/index")
 	public String listContacts(Map<String, Object> map) {
 
-		map.put("contact", new Contact());
+		map.put("tweet", new Tweet());
 		map.put("contactList", contactService.listContact());
 
 		return "contact";
@@ -34,10 +34,10 @@ public class ContactController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addContact(@ModelAttribute("contact") Contact contact,
+	public String addContact(@ModelAttribute("contact") Tweet tweet,
 			BindingResult result) {
 
-		contactService.addContact(contact);
+		contactService.addContact(tweet);
 
 		return "redirect:/index";
 	}
