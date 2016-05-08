@@ -17,15 +17,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class TweetController {
 
 	@Autowired
-	private ITweetService contactService;
+	private ITweetService tweetService;
 
 	@RequestMapping("/index")
 	public String listContacts(Map<String, Object> map) {
 
 		map.put("tweet", new Tweet());
-		map.put("contactList", contactService.listTweets());
+		map.put("tweetList", tweetService.listTweets());
 
-		return "contact";
+		return "tweet";
 	}
 	
 	@RequestMapping("/")
@@ -34,18 +34,18 @@ public class TweetController {
 	}
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
-	public String addContact(@ModelAttribute("contact") Tweet tweet,
+	public String addContact(@ModelAttribute("tweet") Tweet tweet,
 			BindingResult result) {
 
-		contactService.addTweet(tweet);
+		tweetService.addTweet(tweet);
 
 		return "redirect:/index";
 	}
 
-	@RequestMapping("/delete/{contactId}")
-	public String deleteContact(@PathVariable("contactId") Integer contactId) {
+	@RequestMapping("/delete/{tweetId}")
+	public String deleteContact(@PathVariable("tweetId") Integer tweetId) {
 
-		contactService.removeTweet(contactId);
+		tweetService.removeTweet(tweetId);
 
 		return "redirect:/index";
 	}
