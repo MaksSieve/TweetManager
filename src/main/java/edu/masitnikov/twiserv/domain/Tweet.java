@@ -18,8 +18,8 @@ public class Tweet {
     @Column
 	private String text;
 
-    @Column
-    private String time;
+//    @Column
+//    private String time;
 
 	public Integer getId() {
 		return id;
@@ -37,13 +37,13 @@ public class Tweet {
         this.text = text;
     }
 
-    public String getTime() {
-        return time;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
+//    public String getTime() {
+//        return time;
+//    }
+//
+//    public void setTime(String time) {
+//        this.time = time;
+//    }
 
     // Getters and setters
 	
