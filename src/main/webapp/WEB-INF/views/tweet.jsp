@@ -24,52 +24,36 @@
 <br>  
 <h2><spring:message code="label.title" /></h2>
 
-<div style="margin: 50px">
+<div class="box box-primary">
 <form:form method="post" action="add" commandName="tweet">
-	<table>
-		<tr>
-            <td>
-                <form:label path="text">
-                    <spring:message code="label.text"/>
-                </form:label>
-            </td>
-            <td><form:textarea path="text" /></td>
-		</tr>
-		<tr>
-			<td>
-				<form:label path="date">
-					<spring:message code="label.date"/>
-				</form:label>
-			</td>
-			<td>
-				<div class="form-group">
-					<div class='input-group date' id='datetimepicker2'>
-						<form:input path="date" name="date" class="form-control" />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-calendar"></span>
-                    </span>
-					</div>
-				</div>
-				<script type="text/javascript">
-					$(function () {
-						$('#datetimepicker2').datetimepicker({
-							locale: 'ru'
-						});
-					});
-				</script>
-			</td>
-		</tr>
-		<tr>
-			<td colspan="2"><input type="submit"
-				value="<spring:message code="label.addtweet"/>" /></td>
-		</tr>
-	</table>
+	<div class="form-group">
+		<label><spring:message code="label.text"/></label>
+		<textarea class="form-contol" path="text" placeholder="Enter . . . "></textarea>
+	</div>
+	<form:label path="date"></form:label>
+	<div class="form-group">
+		<div class='input-group date' id='datetimepicker2'>
+			<span class="input-group-addon"><spring:message code="label.date"/></span>
+			<input path="date" name="date" class="form-control" />
+			<span class="input-group-addon">
+				<span class="glyphicon glyphicon-calendar"></span>
+			</span>
+		</div>
+	</div>
+	<script type="text/javascript">
+		$(function () {
+			$('#datetimepicker2').datetimepicker({
+				locale: 'ru'
+			});
+		});
+	</script>
+	<input type="submit" value="<spring:message code="label.addtweet"/>" />
 </form:form>
-
-
-<h3><spring:message code="label.tweets" /></h3>
+</div>
+<div class="box">
+<div class="box-header with-border"><h3><spring:message code="label.tweets" /></h3></div>
 <c:if test="${!empty tweetList}">
-	<table class="data table table-bordered">
+	<table class="data table table-bordered box-body">
 		<tr>
 			<th><spring:message code="label.text" /></th>
 			<th><spring:message code="label.status"/></th>
@@ -80,10 +64,10 @@
 			<tr>
 				<td>${tweet.text}</td>
 				<td>
-					<c:if test="${tweet.status='written'}"><span class="badge bg-red">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='correct'}"><span class="badge bg-yellow">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='ready'}"><span class="badge bg-green">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='published'}"><span class="badge bg-blue">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='written'}"><span class="label label-danger">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='correct'}"><span class="label label-warning">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='ready'}"><span class="label label-success">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='published'}"><span class="label-label-primary">${tweet.status}</span></c:if>
 				</td>
 				<td>${tweet.date}</td>
 
