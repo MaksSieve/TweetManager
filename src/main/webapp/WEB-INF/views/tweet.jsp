@@ -65,7 +65,7 @@
 		</tr>
 	</table>
 </form:form>
-</div>
+
 
 <h3><spring:message code="label.tweets" /></h3>
 <c:if test="${!empty tweetList}">
@@ -80,10 +80,10 @@
 			<tr>
 				<td>${tweet.text}</td>
 				<td>
-					<c:if test="${tweet.status=written}"><span class="badge bg-red">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status=correct}"><span class="badge bg-yellow">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status=ready}"><span class="badge bg-green">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status=published}"><span class="badge bg-blue">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='written'}"><span class="badge bg-red">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='correct'}"><span class="badge bg-yellow">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='ready'}"><span class="badge bg-green">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status='published'}"><span class="badge bg-blue">${tweet.status}</span></c:if>
 				</td>
 				<td>${tweet.date}</td>
 
@@ -92,6 +92,6 @@
 		</c:forEach>
 	</table>
 </c:if>
-
+</div>
 </body>
 </html>
