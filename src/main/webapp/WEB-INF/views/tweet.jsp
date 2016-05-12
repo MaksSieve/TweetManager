@@ -24,7 +24,7 @@
 <br>  
 <h2><spring:message code="label.title" /></h2>
 
-<div>
+<div style="margin: 50px">
 <form:form method="post" action="add" commandName="tweet">
 	<table>
 		<tr>
@@ -69,17 +69,22 @@
 
 <h3><spring:message code="label.tweets" /></h3>
 <c:if test="${!empty tweetList}">
-	<table class="data">
+	<table class="data table table-bordered">
 		<tr>
 			<th><spring:message code="label.text" /></th>
-			<th><spring:message code="label.date"/></th>
-			<th><spring:message code="label.status"/> </th>
+			<th><spring:message code="label.status"/></th>
+			<th><spring:message code="label.date"/> </th>
 			<th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${tweetList}" var="tweet">
 			<tr>
 				<td>${tweet.text}</td>
-				<td>${tweet.status}</td>
+				<td>
+					<c:if test="${tweet.status=written}"><span class="badge bg-red">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=correct}"><span class="badge bg-yellow">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=ready}"><span class="badge bg-green">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=published}"><span class="badge bg-blue">${tweet.status}</span></c:if>
+				</td>
 				<td>${tweet.date}</td>
 
 				<td><a href="delete/${tweet.id}"><spring:message code="label.delete" /></a></td>
