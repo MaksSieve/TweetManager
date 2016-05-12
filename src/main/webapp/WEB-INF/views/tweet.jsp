@@ -8,11 +8,11 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
 	<title><spring:message code="label.title" /></title>
-	<script type="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
-	<script type="javascript" src="http://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
-	<script type="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-	<script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
-	<script type="javascript" src="https://cdn.jsdelivr.net/momentjs/2.13.0/locales.min.js"></script>
+	<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript" src="http://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
+	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.13.0/locales.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 </head>
@@ -39,6 +39,23 @@
 				<form:label path="date">
 					<spring:message code="label.date"></spring:message>
 				</form:label>
+			</td>
+			<td>
+				<div class="form-group">
+					<div class='input-group date' id='datetimepicker2'>
+						<input type='text' class="form-control" />
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar"></span>
+                    </span>
+					</div>
+				</div>
+				<script type="text/javascript">
+					$(function () {
+						$('#datetimepicker2').datetimepicker({
+							locale: 'ru'
+						});
+					});
+				</script>
 			</td>
 		</tr>
 		<tr>
