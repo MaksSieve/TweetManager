@@ -8,8 +8,13 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf8">
 	<title><spring:message code="label.title" /></title>
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+	<script type="javascript" src="https://code.jquery.com/jquery-1.12.3.min.js"></script>
+	<script type="javascript" src="http://cdn.jsdelivr.net/momentjs/2.13.0/moment.min.js"></script>
+	<script type="javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script type="javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+	<script type="javascript" src="https://cdn.jsdelivr.net/momentjs/2.13.0/locales.min.js"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
 </head>
 <body>
 
@@ -18,9 +23,8 @@
 </a>
 <br>  
 <h2><spring:message code="label.title" /></h2>
-
+<div>
 <form:form method="post" action="add" commandName="tweet">
-
 	<table>
 		<tr>
             <td>
@@ -30,14 +34,20 @@
             </td>
             <td><form:textarea path="text" /></td>
 		</tr>
-
+		<tr>
+			<td>
+				<form:label path="date">
+					<spring:message code="label.date"></spring:message>
+				</form:label>
+			</td>
+		</tr>
 		<tr>
 			<td colspan="2"><input type="submit"
 				value="<spring:message code="label.addtweet"/>" /></td>
 		</tr>
 	</table>
 </form:form>
-
+</div>
 <h3><spring:message code="label.tweets" /></h3>
 <c:if test="${!empty tweetList}">
 	<table class="data">

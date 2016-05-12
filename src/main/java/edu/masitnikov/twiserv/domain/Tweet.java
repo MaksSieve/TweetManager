@@ -1,10 +1,7 @@
 package edu.masitnikov.twiserv.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Table
@@ -18,8 +15,9 @@ public class Tweet {
     @Column
 	private String text;
 
-//    @Column
-//    private String time;
+    @Column
+	@Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
 	public Integer getId() {
 		return id;
@@ -37,13 +35,13 @@ public class Tweet {
         this.text = text;
     }
 
-//    public String getTime() {
-//        return time;
-//    }
-//
-//    public void setTime(String time) {
-//        this.time = time;
-//    }
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
 
     // Getters and setters
 	
