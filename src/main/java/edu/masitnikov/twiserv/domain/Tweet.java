@@ -1,7 +1,6 @@
 package edu.masitnikov.twiserv.domain;
 
 import org.springframework.format.annotation.DateTimeFormat;
-
 import javax.persistence.*;
 import java.util.Date;
 
@@ -20,6 +19,10 @@ public class Tweet {
     @Column
 	@Temporal(TemporalType.TIMESTAMP)
     private Date date;
+
+    @Column
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
 	public Integer getId() {
 		return id;
@@ -45,6 +48,11 @@ public class Tweet {
         this.date = date;
     }
 
-    // Getters and setters
-	
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
+    }
 }

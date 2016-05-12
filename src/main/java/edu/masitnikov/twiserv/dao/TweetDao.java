@@ -25,11 +25,18 @@ public class TweetDao implements ITweetDao {
 	}
 
 	public void removeTweet(Integer id) {
+		sessionFactory.getCurrentSession().beginTransaction();
 		Tweet tweet = (Tweet) sessionFactory.getCurrentSession().load(
-				Tweet.class, id);
+			Tweet.class, id);
 		if (null != tweet) {
 			sessionFactory.getCurrentSession().delete(tweet);
+			sessionFactory.getCurrentSession().getTransaction().commit();
 		}
+	}
 
+	public void removeTweet(Tweet tweet) {
+		sessionFactory.getCurrentSession().beginTransaction();
+		sessionFactory.getCurrentSession().delete(tweet);
+		sessionFactory.getCurrentSession().getTransaction().commit();
 	}
 }

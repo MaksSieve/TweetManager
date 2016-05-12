@@ -72,11 +72,16 @@
 	<table class="data">
 		<tr>
 			<th><spring:message code="label.text" /></th>
+			<th><spring:message code="label.date"/></th>
+			<th><spring:message code="label.status"/> </th>
 			<th>&nbsp;</th>
 		</tr>
 		<c:forEach items="${tweetList}" var="tweet">
 			<tr>
 				<td>${tweet.text}</td>
+				<td>${tweet.status}</td>
+				<td>${tweet.date}</td>
+
 				<td><a href="delete/${tweet.id}"><spring:message code="label.delete" /></a></td>
 			</tr>
 		</c:forEach>

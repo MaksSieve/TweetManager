@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
+import edu.masitnikov.twiserv.domain.Status;
 import edu.masitnikov.twiserv.domain.Tweet;
 import edu.masitnikov.twiserv.service.ITweetService;
 
@@ -41,7 +42,7 @@ public class TweetController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("tweet") Tweet tweet,
 			BindingResult result) {
-
+        tweet.setStatus(Status.written);
 		tweetService.addTweet(tweet);
 
 		return "redirect:/index";
