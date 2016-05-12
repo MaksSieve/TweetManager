@@ -1,5 +1,7 @@
 package edu.masitnikov.twiserv.web;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.Map;
 
 import edu.masitnikov.twiserv.domain.Tweet;
@@ -7,12 +9,11 @@ import edu.masitnikov.twiserv.service.ITweetService;
 
 import edu.masitnikov.twiserv.service.TweetService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class TweetController {
@@ -52,5 +53,12 @@ public class TweetController {
 		tweetService.removeTweet(tweetId);
 
 		return "redirect:/index";
+	}
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy hh:mm");
+		binder.registerCustomEditor(Date.class, new CustomDateEditor(
+			dateFormat, false));
 	}
 }

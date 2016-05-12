@@ -23,6 +23,7 @@
 </a>
 <br>  
 <h2><spring:message code="label.title" /></h2>
+
 <div>
 <form:form method="post" action="add" commandName="tweet">
 	<table>
@@ -37,13 +38,13 @@
 		<tr>
 			<td>
 				<form:label path="date">
-					<spring:message code="label.date"></spring:message>
+					<spring:message code="label.date"/>
 				</form:label>
 			</td>
 			<td>
 				<div class="form-group">
 					<div class='input-group date' id='datetimepicker2'>
-						<input type='text' class="form-control" />
+						<form:input path="date" name="date" class="form-control" />
                     <span class="input-group-addon">
                         <span class="glyphicon glyphicon-calendar"></span>
                     </span>
@@ -65,6 +66,7 @@
 	</table>
 </form:form>
 </div>
+
 <h3><spring:message code="label.tweets" /></h3>
 <c:if test="${!empty tweetList}">
 	<table class="data">
