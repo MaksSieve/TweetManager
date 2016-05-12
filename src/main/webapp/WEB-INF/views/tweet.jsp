@@ -14,11 +14,7 @@
 <a href="<c:url value="/logout" />">
 	<spring:message code="label.logout" />
 </a>
-
-<a href="<c:url value="/login.jsp"/>">
-	<spring:message code="label.login" />
-</a>
-  
+<br>  
 <h2><spring:message code="label.title" /></h2>
 
 <form:form method="post" action="add" commandName="tweet">
@@ -32,53 +28,24 @@
             </td>
             <td><form:textarea path="text" /></td>
 		</tr>
-        <!---
-		<tr>
-			<td><form:label path="firstname">
-				<spring:message code="label.firstname" />
-			</form:label></td>
-			<td><form:input path="firstname" /></td>
-		</tr>
-		<tr>
-			<td><form:label path="lastname">
-				<spring:message code="label.lastname" />
-			</form:label></td>
-			<td><form:input path="lastname" /></td>
-		</tr>
-		<tr>
-			<td><form:label path="email">
-				<spring:message code="label.email" />
-			</form:label></td>
-			<td><form:input path="email" /></td>
-		</tr>
-		<tr>
-			<td><form:label path="telephone">
-				<spring:message code="label.telephone" />
-			</form:label></td>
-			<td><form:input path="telephone" /></td>
-		</tr>
-		-->
+
 		<tr>
 			<td colspan="2"><input type="submit"
-				value="<spring:message code="label.addcontact"/>" /></td>
+				value="<spring:message code="label.addtweet"/>" /></td>
 		</tr>
 	</table>
 </form:form>
 
-<h3><spring:message code="label.contacts" /></h3>
-<c:if test="${!empty contactList}">
+<h3><spring:message code="label.tweets" /></h3>
+<c:if test="${!empty tweetList}">
 	<table class="data">
 		<tr>
-			<th><spring:message code="label.firstname" /></th>
-			<th><spring:message code="label.email" /></th>
-			<th><spring:message code="label.telephone" /></th>
+			<th><spring:message code="label.text" /></th>
 			<th>&nbsp;</th>
 		</tr>
-		<c:forEach items="${contactList}" var="tweet">
+		<c:forEach items="${tweetList}" var="tweet">
 			<tr>
-				<td>${tweet.lastname}, ${tweet.firstname}</td>
-				<td>${tweet.email}</td>
-				<td>${tweet.telephone}</td>
+				<td>${tweet.text}</td>
 				<td><a href="delete/${tweet.id}"><spring:message code="label.delete" /></a></td>
 			</tr>
 		</c:forEach>

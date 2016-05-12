@@ -31,8 +31,11 @@ public class TweetController {
 	
 	@RequestMapping("/")
 	public String home() {
-		return "redirect:/index ";
+		return "redirect:/login ";
 	}
+
+	@RequestMapping("/login")
+	public String login(){ return "login"; }
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("tweet") Tweet tweet,
