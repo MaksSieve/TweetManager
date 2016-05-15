@@ -15,39 +15,65 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.13.0/locales.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+    <link href="<c:url value="/res/css/navbar-fixed-top.css"/>" rel="stylesheet">
+
+	<script type="text/javascript" src="<c:url value="/res/js/datetimepicker.js"/>"></script>
 </head>
 <body>
-
-<a href="<c:url value="/logout" />">
-	<spring:message code="label.logout" />
-</a>
-<br>  
-<h2><spring:message code="label.title" /></h2>
-
-<div class="box box-primary">
+<nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">Defter</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse" aria-expanded="false" style="height: 1px;">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="#">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li class="dropdown-header">Nav header</li>
+                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">One more separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="<c:url value="/logout" />"><spring:message code="label.logout" /></a></li>
+            </ul>
+        </div><!--/.nav-collapse -->
+    </div>
+</nav>
+<div class="col-md-6" style="align-self: center; align-content: center">
+<div class="box box-primary with-borders" style="width: 400px">
 <form:form method="post" action="add" commandName="tweet">
 	<div class="form-group">
-		<label><spring:message code="label.text"/></label>
-		<textarea class="form-contol" path="text" placeholder="Enter . . . "></textarea>
+		<label><spring:message code="label.text"/></label><br>
+		<form:textarea class="form-contol" rows="3" path="text" placeholder="Enter . . . "></form:textarea>
 	</div>
 	<form:label path="date"></form:label>
 	<div class="form-group">
 		<div class='input-group date' id='datetimepicker2'>
 			<span class="input-group-addon"><spring:message code="label.date"/></span>
-			<input path="date" name="date" class="form-control" />
+			<form:input path="date" name="date" class="form-control" />
 			<span class="input-group-addon">
 				<span class="glyphicon glyphicon-calendar"></span>
 			</span>
 		</div>
 	</div>
-	<script type="text/javascript">
-		$(function () {
-			$('#datetimepicker2').datetimepicker({
-				locale: 'ru'
-			});
-		});
-	</script>
-	<input type="submit" value="<spring:message code="label.addtweet"/>" />
+
+	<input class="btn btn-primary btn-lg" type="submit" value="<spring:message code="label.addtweet"/>" />
 </form:form>
 </div>
 <div class="box">
@@ -64,18 +90,18 @@
 			<tr>
 				<td>${tweet.text}</td>
 				<td>
-					<c:if test="${tweet.status='written'}"><span class="label label-danger">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='correct'}"><span class="label label-warning">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='ready'}"><span class="label label-success">${tweet.status}</span></c:if>
-					<c:if test="${tweet.status='published'}"><span class="label-label-primary">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=='written'}"><span class="label label-danger">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=='correct'}"><span class="label label-warning">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=='ready'}"><span class="label label-success">${tweet.status}</span></c:if>
+					<c:if test="${tweet.status=='published'}"><span class="label label-primary">${tweet.status}</span></c:if>
 				</td>
 				<td>${tweet.date}</td>
-
 				<td><a href="delete/${tweet.id}"><spring:message code="label.delete" /></a></td>
 			</tr>
 		</c:forEach>
 	</table>
 </c:if>
+</div>
 </div>
 </body>
 </html>

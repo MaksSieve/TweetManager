@@ -42,7 +42,7 @@ public class TweetController {
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	public String addContact(@ModelAttribute("tweet") Tweet tweet,
 			BindingResult result) {
-        tweet.setStatus(Status.written);
+        tweet.setStatus(Status.ready);
 		tweetService.addTweet(tweet);
 
 		return "redirect:/index";

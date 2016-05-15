@@ -4,7 +4,9 @@ import java.util.List;
 
 import edu.masitnikov.twiserv.domain.Tweet;
 
+import org.aspectj.weaver.tools.Trace;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
@@ -16,11 +18,11 @@ public class TweetDao implements ITweetDao {
 
 	public void addTweet(Tweet tweet) {
 		sessionFactory.getCurrentSession().save(tweet);
+		sessionFactory.getCurrentSession().flush();
 	}
 
 	@SuppressWarnings("unchecked")
 	public List<Tweet> listTweets() {
-
 		return sessionFactory.getCurrentSession().createQuery("from Tweet").list();
 	}
 
@@ -30,13 +32,10 @@ public class TweetDao implements ITweetDao {
 			Tweet.class, id);
 		if (null != tweet) {
 			sessionFactory.getCurrentSession().delete(tweet);
-			sessionFactory.getCurrentSession().getTransaction().commit();
 		}
 	}
 
 	public void removeTweet(Tweet tweet) {
-		sessionFactory.getCurrentSession().beginTransaction();
 		sessionFactory.getCurrentSession().delete(tweet);
-		sessionFactory.getCurrentSession().getTransaction().commit();
 	}
 }
