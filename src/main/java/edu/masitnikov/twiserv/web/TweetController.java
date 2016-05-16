@@ -9,6 +9,7 @@ import edu.masitnikov.twiserv.domain.Tweet;
 import edu.masitnikov.twiserv.service.ITweetService;
 
 import edu.masitnikov.twiserv.service.TweetService;
+import org.hibernate.HibernateException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
@@ -43,7 +44,12 @@ public class TweetController {
 	public String addContact(@ModelAttribute("tweet") Tweet tweet,
 			BindingResult result) {
         tweet.setStatus(Status.ready);
-		tweetService.addTweet(tweet);
+		try {
+			tweetService.addTweet(tweet);
+		}catch (HibernateException ex) {
+			return "error403";
+		}
+
 
 		return "redirect:/index";
 	}

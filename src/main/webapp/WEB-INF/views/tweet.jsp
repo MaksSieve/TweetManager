@@ -15,9 +15,9 @@
 	<script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/2.13.0/locales.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
-    <link href="<c:url value="/res/css/navbar-fixed-top.css"/>" rel="stylesheet">
 
-	<script type="text/javascript" src="<c:url value="/res/js/datetimepicker.js"/>"></script>
+    <link href="<c:url value="/WEB-INF/views/css/navbar-fixed-top.css"/>" rel="stylesheet">
+	<script type="text/javascript" src="<c:url value="/WEB-INF/views/js/datetimepicker.js"/>"></script>
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top">
@@ -55,14 +55,15 @@
         </div><!--/.nav-collapse -->
     </div>
 </nav>
-<div class="col-md-6" style="align-self: center; align-content: center">
-<div class="box box-primary with-borders" style="width: 400px">
+
+<div class="container">
+<div class="panel panel-default" style="width: 400px;">
 <form:form method="post" action="add" commandName="tweet">
 	<div class="form-group">
 		<label><spring:message code="label.text"/></label><br>
-		<form:textarea class="form-contol" rows="3" path="text" placeholder="Enter . . . "></form:textarea>
+		<form:textarea class="form-contol" rows="3" path="text" placeholder="Enter . . . "/>
 	</div>
-	<form:label path="date"></form:label>
+	<form:label path="date"/>
 	<div class="form-group">
 		<div class='input-group date' id='datetimepicker2'>
 			<span class="input-group-addon"><spring:message code="label.date"/></span>
@@ -75,9 +76,8 @@
 
 	<input class="btn btn-primary btn-lg" type="submit" value="<spring:message code="label.addtweet"/>" />
 </form:form>
-</div>
-<div class="box">
-<div class="box-header with-border"><h3><spring:message code="label.tweets" /></h3></div>
+
+<div class="panel-heading"><h3><spring:message code="label.tweets"/></h3></div>
 <c:if test="${!empty tweetList}">
 	<table class="data table table-bordered box-body">
 		<tr>

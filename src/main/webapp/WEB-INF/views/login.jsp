@@ -14,11 +14,11 @@
 	<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 
-	<link href="${pageContext.request.contextPath}/res/css/login.css" rel="stylesheet">
+	<link href="/resources/css/login.css" rel="stylesheet">
 
 </head>
 <body>
-	<div class="container">
+	<div class="container text-center">
 		<c:if test="${not empty param.error}">
 			<font color="red"> <spring:message code="label.loginerror" />
 				: ${sessionScope["SPRING_SECURITY_LAST_EXCEPTION"].message} </font>
